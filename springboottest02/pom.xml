@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hailicy</groupId>
-    <artifactId>test0324</artifactId>
+    <artifactId>springboottest02</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>test0324</name>
+    <name>springboottest02</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -35,21 +35,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-        <!--热部署-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-        </dependency>
-
-<!--        不报红-->
-        <dependency>
-            <groupId> org.springframework.boot </groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-
     </dependencies>
 
     <build>

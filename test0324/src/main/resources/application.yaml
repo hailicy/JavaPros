@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+person2:
+  name: hailicy海利
+  age: 2
+  happy: true
+  birth: 2019/3/25
+  maps: {k1: v1,k2: "对强化"}
+  lists:
+    - code
+    - music
+    - movie
+  dog:
+    name: 旺财
+    age: 3
