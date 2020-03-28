@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--注明数据库配置文件，放在resources目录下-->
+    <properties resource="db.properties"></properties>
+    <settings>
+        <!--        标准日志工程实现，使用log4j-->
+        <!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <!--起别名,alias类少时用，可以起别名，packge多时用，不能起别名，首字母小写的包名-->
+    <typeAliases>
+        <package name="com.hailicy.pojo"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}" />
+                <property name="password" value="${pwd}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--注明具体的mapper.xml文件，也可以使用包扫描的方法配置-->
+    <mappers>
+        <mapper resource="com/hailicy/dao/UserMapper.xml"></mapper>
+    </mappers>
+
+</configuration>

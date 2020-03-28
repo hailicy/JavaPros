@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--namespace写接口包名+接口-->
+<mapper namespace="com.hailicy.dao.UserMapper">
+
+    <!--结果集映射-->
+    <resultMap id="UserMap" type="User">
+        <!--        <id property="id" column="id"></id>-->
+        <id property="password" column="password"></id>
+        <!--        <id property="username" column="username"></id>-->
+    </resultMap>
+
+    <select id="getUserList" resultMap="UserMap" >select * from mybatis.User</select>
+
+    <select id="getUserById" resultType="user">
+        select * from mybatis.User where id = #{id}
+    </select>
+
+    <!--对象中的属性可以直接取出来-->
+    <insert id="insertUser" parameterType="user">
+        insert into mybatis.User(`id`,`name`,`pwd`) values(#{id},#{name},#{pwd})
+    </insert>
+
+    <update id="updateUser" parameterType="user">
+        update mybatis.User set name=#{name} ,pwd=#{pwd} where id = #{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="user">
+        delete from mybatis.User where id = #{id}
+    </delete>
+
+    <select id="getUser" parameterType="map" resultMap="UserMap">
+        select * from mybatis.User limit #{startIndex} ,#{pageSize}
+    </select>
+
+
+</mapper>
