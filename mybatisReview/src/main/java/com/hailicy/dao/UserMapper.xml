@@ -9,9 +9,7 @@
 
     <!--结果集映射-->
     <resultMap id="UserMap" type="User">
-        <!--        <id property="id" column="id"></id>-->
         <id property="password" column="password"></id>
-        <!--        <id property="username" column="username"></id>-->
     </resultMap>
 
     <select id="getUserList" resultMap="UserMap" >select * from mybatis.User</select>

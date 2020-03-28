@@ -25,8 +25,6 @@ public class test {
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         List userList = userMapper.getUserList();
         System.out.println(userList);
-
-
     }
 
     @Test//分页查询
@@ -47,15 +45,6 @@ public class test {
     public void test3(){
         SqlSession sqlSession = mybatisUtils.getSqlSessionFactory();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-//        Map<String,Integer> map = new HashMap<String ,Integer>();
-//        map.put("startIndex",0);
-//        map.put("pageSize",2);
-//        System.out.println();
-//        List<User> userList = userMapper.getUser(map);
-//        for (User user : userList) {
-//            System.out.println(user);
-//        }
-
         userMapper.deleteUser(1);
     }
 
@@ -114,8 +103,5 @@ public class test {
             sqlSession.commit();
             System.out.println("修改执行成功！");
         }
-
-
     }
-
 }
