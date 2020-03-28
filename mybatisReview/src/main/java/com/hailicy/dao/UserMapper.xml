@@ -21,12 +21,12 @@
     </select>
 
     <!--对象中的属性可以直接取出来-->
-    <insert id="insertUser" parameterType="user">
-        insert into mybatis.User(`id`,`name`,`pwd`) values(#{id},#{name},#{pwd})
+    <insert id="insertUser" parameterType="User">
+        insert into mybatis.User(`id`,`username`,`password`) values(#{id},#{username},#{password})
     </insert>
 
-    <update id="updateUser" parameterType="user">
-        update mybatis.User set name=#{name} ,pwd=#{pwd} where id = #{id}
+    <update id="updateUser" parameterType="User">
+        update mybatis.User set username=#{username} ,password=#{password} where id = #{id}
     </update>
 
     <delete id="deleteUser" parameterType="user">
