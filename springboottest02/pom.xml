@@ -35,6 +35,28 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+
+<!--        视图解析器-->
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf-spring5</artifactId>
+        </dependency>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </dependencies>
 
     <build>
