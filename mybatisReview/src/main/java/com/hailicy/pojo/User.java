@@ -1,12 +1,14 @@
 package com.hailicy.pojo;
 
+import java.io.Serializable;
+
 /**
  * 创建时间: 2020/3/28 17:28
  * 文件备注:
  * 编写人员:
  */
 
-public class User {
+public class User implements Serializable {
 
     private Integer id;
     private String username;

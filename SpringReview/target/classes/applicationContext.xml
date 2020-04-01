@@ -1,16 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-           http://www.springframework.org/schema/context
-           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <!--    <bean id="User" class="com.hailicy.pojo.User"></bean>-->
-    <!--    <bean id="Addr" class="com.hailicy.pojo.Addr"/>-->
+    <!--开启扫描-->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
 
-    <context:component-scan base-package="com.hailicy.pojo"></context:component-scan>
-    <context:annotation-config></context:annotation-config>
+
+    <!-- 准备工作: 导入aop(约束)命名空间 -->
+    <!-- 1.配置目标对象 -->
+    <bean id="person" class="com.hailicy.test.Person" ></bean>
+    <!-- 2.配置通知对象 -->
+    <bean id="aop" class="com.hailicy.test.aop" ></bean>
+
+
+
+<!--    &lt;!&ndash; 3.配置将通知织入目标对象 &ndash;&gt;-->
+<!--    <aop:config>-->
+<!--        &lt;!&ndash; 配置切入点 &ndash;&gt;-->
+<!--        <aop:pointcut expression="execution(* com.hailicy.test.Person.*(..))" id="pointcut1"/>-->
+<!--        <aop:aspect ref="aop" >-->
+<!--            &lt;!&ndash; 指定名为before方法作为前置通知 &ndash;&gt;-->
+<!--            <aop:before method="qianzhi" pointcut-ref="pointcut1" />-->
+<!--            &lt;!&ndash; 后置 &ndash;&gt;-->
+<!--            <aop:after-returning method="zuizhong" pointcut-ref="pointcut1" />-->
+<!--            &lt;!&ndash; 环绕通知 &ndash;&gt;-->
+<!--            <aop:around method="huanrao" pointcut-ref="pointcut1" />-->
+<!--            &lt;!&ndash; 异常拦截通知 &ndash;&gt;-->
+<!--            <aop:after-throwing method="yichang" pointcut-ref="pointcut1"/>-->
+<!--            &lt;!&ndash; 后置 &ndash;&gt;-->
+<!--            <aop:after method="houzhi" pointcut-ref="pointcut1"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
 </beans>
+
+        <!--<?xml version="1.0" encoding="UTF-8"?>-->
+        <!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+        <!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+        <!--       xmlns:context="http://www.springframework.org/schema/context"-->
+        <!--       xsi:schemaLocation="http://www.springframework.org/schema/beans-->
+        <!--           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd-->
+        <!--           http://www.springframework.org/schema/context-->
+        <!--           http://www.springframework.org/schema/context/spring-context-2.5.xsd">-->
+
+        <!--    &lt;!&ndash;    <bean id="User" class="com.hailicy.pojo.User"></bean>&ndash;&gt;-->
+        <!--    &lt;!&ndash;    <bean id="Addr" class="com.hailicy.pojo.Addr"/>&ndash;&gt;-->
+
+
+        <!--    <context:component-scan base-package="com.hailicy.pojo"></context:component-scan>-->
+        <!--    <context:annotation-config></context:annotation-config>-->
+        <!--</beans>-->

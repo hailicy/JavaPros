@@ -2,6 +2,7 @@ package com.hailicy.dao;
 
 import com.hailicy.pojo.User;
 import com.hailicy.utils.mybatisUtils;
+import com.hailicy.utils.utils;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -72,6 +73,7 @@ public class test {
         }catch (Exception e){e.printStackTrace();}
         finally {
             sqlSession.commit();
+            sqlSession.close();
         }
     }
 
@@ -104,4 +106,122 @@ public class test {
             System.out.println("修改执行成功！");
         }
     }
+
+
+    @Test//动态sql
+    public void test8(){
+        SqlSession sqlSession = mybatisUtils.getSqlSessionFactory();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        try {
+
+            Map map = new HashMap();
+            map.put("id",1);
+            List<User> userList = userMapper.queryUser(map);
+            for (User user : userList) {
+                System.out.println(user);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            System.out.println("执行成功！");
+        }
+    }
+
+    @Test//动态sqlswitch
+    public void test9(){
+        SqlSession sqlSession = mybatisUtils.getSqlSessionFactory();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        try {
+
+            Map map = new HashMap();
+            map.put("id",1);
+            map.put("username","hailc");
+            List<User> userList = userMapper.queryUser2(map);
+            for (User user : userList) {
+                System.out.println(user);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            System.out.println("执行成功！");
+        }
+    }
+
+    @Test//动态sqlwhere
+    public void test10(){
+        SqlSession sqlSession = mybatisUtils.getSqlSessionFactory();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        try {
+
+            Map map = new HashMap();
+            //map.put("id",1);
+            map.put("username","hailc");
+            List<User> userList = userMapper.queryUser3(map);
+            for (User user : userList) {
+                System.out.println(user);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            System.out.println("执行成功！");
+        }
+    }
+
+
+    @Test//按id修改，动态set
+    public void test11(){
+        SqlSession sqlSession = mybatisUtils.getSqlSessionFactory();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        try {
+            Map map = new HashMap();
+            map.put("id",2);
+            map.put("password","wdeh23");
+            map.put("username","动态改2");
+            userMapper.updateUser2(map);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            sqlSession.commit();
+            System.out.println("修改执行成功！");
+        }
+    }
+
+
+    @Test//二级缓存测试
+    public void test12(){
+        SqlSession sqlSession = mybatisUtils.getSqlSessionFactory();
+        SqlSession sqlSession2 = mybatisUtils.getSqlSessionFactory();
+
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        User user = userMapper.getUserById(2);
+        if(user!=null){
+            System.out.println(user);}else {
+        System.out.println("未找到！");
+        }
+        sqlSession.close();
+
+
+        UserMapper userMapper2 = sqlSession2.getMapper(UserMapper.class);
+        User user2 = userMapper2.getUserById(2);
+        if(user2!=null){
+            System.out.println(user);}else {
+            System.out.println("未找到！");
+        }
+        sqlSession2.close();
+    }
+
+
+    @Test//
+    public void test13(){
+        SqlSession sqlSession = utils.getSqlSessionFactory();
+        UserMapper2 userMapper2 = (UserMapper2) sqlSession.getMapper(UserMapper2.class);
+
+        List<User> userList = userMapper2.getAll();
+        for (User user : userList) {
+            System.out.println(user);
+        }
+}
+
+
+
 }

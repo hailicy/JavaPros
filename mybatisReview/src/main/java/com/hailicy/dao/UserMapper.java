@@ -29,4 +29,16 @@ public interface UserMapper {
 
     //实现分页查询
     List<User> getUser(Map<String,Integer> map);
+
+    //动态sql学习
+    List<User> queryUser(Map<String ,Object> map);
+
+    //动态sql学习，choose
+    List<User> queryUser2(Map<String ,Object> map);
+
+    //动态sql学习，where
+    List<User> queryUser3(Map<String ,Object> map);
+
+    //动态修改用户
+    int updateUser2(Map<String ,Object> map);
 }

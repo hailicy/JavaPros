@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-           http://www.springframework.org/schema/context
-           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <!--    <bean id="User" class="com.hailicy.pojo.User"></bean>-->
-    <!--    <bean id="Addr" class="com.hailicy.pojo.Addr"/>-->
+    <!--开启扫描-->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
-
-    <context:component-scan base-package="com.hailicy.pojo"></context:component-scan>
-    <context:annotation-config></context:annotation-config>
+    <!-- 准备工作: 导入aop(约束)命名空间 -->
+    <!-- 1.配置目标对象 -->
+    <bean id="person" class="com.hailicy.test.Person" ></bean>
+    <!-- 2.配置通知对象 -->
+    <bean id="aop" class="com.hailicy.test.aop" ></bean>
 </beans>
+
+

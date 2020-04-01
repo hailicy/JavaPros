@@ -7,6 +7,13 @@
 <!--namespace写接口包名+接口-->
 <mapper namespace="com.hailicy.dao.UserMapper">
 
+<!--    在当前mapper开启二级缓存-->
+    <cache
+            eviction="FIFO"
+            flushInterval="60000"
+            size="512"
+            readOnly="true"/>
+
     <!--结果集映射-->
     <resultMap id="UserMap" type="User">
         <id property="password" column="password"></id>
@@ -34,6 +41,52 @@
     <select id="getUser" parameterType="map" resultMap="UserMap">
         select * from mybatis.User limit #{startIndex} ,#{pageSize}
     </select>
+
+    <select id="queryUser" parameterType="map" resultMap="UserMap">
+        select * from mybatis.User
+        <if test="id != null">
+            where id = #{id}
+        </if>
+    </select>
+
+    <select id="queryUser2" parameterType="map" resultMap="UserMap">
+        select * from mybatis.User
+        <choose>
+            <when test="id!=null">
+                where id = #{id}
+            </when>
+            <when test="username!=null">
+                where username = #{username}
+            </when>
+            <when test="username!=null and id!=null">
+                where username = #{username} and id = #{id}
+            </when>
+        </choose>
+    </select>
+
+    <select id="queryUser3" parameterType="map" resultMap="UserMap">
+        select * from mybatis.User
+        <where>
+            <if test="id!=null">
+                id = #{id}
+            </if>
+            <if test="username!=null">
+                and username = #{username}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateUser2" parameterType="map">
+        update mybatis.User
+        <set>
+            <if test="username != null">username=#{username},</if>
+            <if test="password != null">password=#{password},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+
+
 
 
 </mapper>
