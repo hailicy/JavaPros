@@ -1,0 +1,11 @@
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  application:
+    name: ems #微服务名称
+
+server:
+  servlet:
+    context-path: /ems #设置项目名称，访问路径前缀加这个
