@@ -5,7 +5,27 @@ spring:
       suffix: .jsp
   application:
     name: ems #微服务名称
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://139.196.86.99:3306/ems?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 131428
+
+
+#  本机是8
+#  jdbc:mysql:///ems?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=CTT
+#
+#
+#  阿里云是5.8
+#  jdbc:mysql://139.196.86.99:3306/ems?useUnicode=true&characterEncoding=UTF-8
+
 
 server:
   servlet:
     context-path: /ems #设置项目名称，访问路径前缀加这个
+    jsp:
+      init-parameters:
+        development: true #开启jsp页面热部署
+mybatis:
+  mapper-locations: classpath:com/hailicy/sbmbjppro/mapper/*.xml   #mapper配置文件的位置
+  type-aliases-package: com.hailicy.sbmbjppro.entity #entity存放对应的实体对象

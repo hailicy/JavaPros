@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--namespace写接口包名+接口-->
+<mapper namespace="com.hailicy.sbmbjppro.dao.UserDao" >
+
+    <insert id="save" parameterType="User">
+        insert into t_user values(#{id},#{username},#{realname},#{password},#{sex})
+    </insert>
+
+
+    <select id="findByUsernameAndPassword" resultType="User">
+        select id,username,realname,password,sex from t_user where username=#{username} and password=#{password}
+    </select>
+
+</mapper>
