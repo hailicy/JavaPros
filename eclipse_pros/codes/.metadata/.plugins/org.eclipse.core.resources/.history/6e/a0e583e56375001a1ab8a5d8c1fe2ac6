@@ -1,0 +1,24 @@
+package ю╤ге;
+
+public class test {
+	static int a[] = {1,2,3,4,5,6,7,8,9};
+	
+	public static void main(String[] args) {
+		int ans = test();
+	}
+	
+	static int test() {
+		int ans = 0;
+		for(int i=1;i<=9*8*7*6*5*4*3*2;i++) {
+			int x1 = a[0]+a[1]+a[2]+a[3];
+			int x2 = a[3]+a[4]+a[5]+a[6];		
+			int x3 = a[6]+a[7]+a[8]+a[9];		
+			if(x1 == x2 && x3 == x2) {ans+=1;}		
+		}
+		
+		
+		
+		
+		return ans/6;
+	}
+}
