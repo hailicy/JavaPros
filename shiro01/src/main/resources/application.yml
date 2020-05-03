@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://139.196.86.99:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    password: 131428
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: hailicy
+  application:
+    name: shiro01
+
+
+mybatis:
+  type-aliases-package: com.sevenonethree.bookshop.dao

@@ -8,6 +8,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 创建时间: 2020/5/3 12:35
@@ -56,5 +57,11 @@ public class myController {
             model.addAttribute("msg","密码错误");
             return "login";
         }
+    }
+
+    @RequestMapping("/noauth")
+    @ResponseBody
+    public String unauthorized(){
+        return "未经授权无法访问此页面";
     }
 }

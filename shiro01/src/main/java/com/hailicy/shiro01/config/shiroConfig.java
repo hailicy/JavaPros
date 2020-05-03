@@ -1,5 +1,6 @@
 package com.hailicy.shiro01.config;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import org.apache.catalina.User;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
@@ -36,15 +37,26 @@ public class shiroConfig {
             perms拥有对某个资源的权限才能访问
             role拥有某个角色权限才能访问
          */
+
+        //登录认证
         Map<String,String> filterMap = new LinkedHashMap<>();
 //        filterMap.put("/user/add","authc");
 //        filterMap.put("/user/update","authc");
+
+        //授权，正常的情况下未授权会跳转到未授权页面，否则401
+        filterMap.put("/user/add","perms[user:add]");//user需要有add权限才能访问
+        filterMap.put("/user/update","perms[user:update]");//user需要有add权限才能访问
+
         filterMap.put("/user/*","authc");
+
 
         bean.setFilterChainDefinitionMap(filterMap);
 
         //设置登录的请求
         bean.setLoginUrl("/toLogin");
+
+        //设置未授权的请求
+        bean.setUnauthorizedUrl("/noauth");
 
         return bean;
     }
@@ -68,6 +80,14 @@ public class shiroConfig {
     public UserRealm userRealm(){
         return new UserRealm();
     }
+
+
+    //整合thymeleaf
+    @Bean
+    public ShiroDialect getShiroDialect(){
+        return new ShiroDialect();
+    }
+
 
 
 }
