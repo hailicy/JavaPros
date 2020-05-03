@@ -1,6 +1,7 @@
 package com.hailicy.dao;
 
 import com.hailicy.pojo.User;
+import com.hailicy.pojo.blob;
 
 import java.util.List;
 import java.util.Map;
@@ -41,4 +42,7 @@ public interface UserMapper {
 
     //动态修改用户
     int updateUser2(Map<String ,Object> map);
+
+    //插入textblob
+    void insertBlob(blob blob);
 }

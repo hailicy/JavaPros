@@ -85,6 +85,10 @@
         where id = #{id}
     </update>
 
+    <insert id="insertBlob" parameterType="blob">
+        insert into mybatis.test values(#{id},#{text})
+    </insert>
+
 
 
 

@@ -1,6 +1,7 @@
 package com.hailicy.dao;
 
 import com.hailicy.pojo.User;
+import com.hailicy.pojo.blob;
 import com.hailicy.utils.mybatisUtils;
 import com.hailicy.utils.utils;
 import org.apache.ibatis.session.SqlSession;
@@ -10,6 +11,7 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * 创建时间: 2020/3/28 17:33
@@ -220,7 +222,24 @@ public class test {
         for (User user : userList) {
             System.out.println(user);
         }
-}
+
+
+    }
+
+    @Test//字节存储
+    public void test14(){
+        SqlSession sqlSession = utils.getSqlSessionFactory();
+        UserMapper userMapper = (UserMapper) sqlSession.getMapper(UserMapper.class);
+
+        String text="味道2";
+        byte[] b = text.getBytes();
+        //Integer i = Integer.valueOf(UUID.randomUUID().toString().replace("-",""));
+        userMapper.insertBlob(new blob(null,b));
+        sqlSession.commit();
+        sqlSession.close();
+        String bb = new String(b);
+        System.out.println(bb);
+    }
 
 
 

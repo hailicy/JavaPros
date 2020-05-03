@@ -1,0 +1,90 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/userlogin/userlogin",
+    "pages/admin/admin/index",
+    "pages/userregist/userregist",
+    "pages/admin/passwordreset/passwordreset",
+    "pages/forget/forget",
+    "pages/example/fdback/fdback",
+    "pages/zixundetail/detail",
+    "pages/zixun/zixun",
+    "pages/admin/showuser/showuser",
+    "pages/admin/success/delresult",
+    "pages/admin/none/none",
+    "pages/admin/teacheradmin/addteacher/addteacher",
+    "pages/admin/teacheradmin/editteacher/editteacher",
+    "pages/admin/teacheradmin/editform/editform",
+    "pages/admin/teacheradmin/deleteteacher/deleteteacher",
+    "pages/admin/courseadmin/editcourse/editcourse",
+    "pages/admin/courseadmin/editform/editform",
+    "pages/admin/courseadmin/addcourse/addcourse",
+    "pages/admin/studentadmin/deletestudent/deletestudent",
+    "pages/admin/studentadmin/addstudent/addstudent",
+    "pages/admin/studentadmin/editstudent/editstudent",
+    "pages/admin/studentadmin/editform/editform",
+    "pages/admin/courseadmin/deletecourse/deletecourse",
+    "pages/action/action",
+    "pages/asset/index",
+    "pages/coursedetail/index",
+    "pages/detail/index",
+    "pages/score/index",
+    "pages/recharge/index",
+    "pages/teacher/teacher",
+    "pages/teacherlist/teacherlist",
+    "pages/course/course",
+    "pages/mine/mine",
+    "pages/example/collect/collect",
+    "pages/example/sign/index",
+    "pages/example/coupons/index",
+    "pages/example/contact/index",
+    "pages/example/order/order",
+    "pages/xueyuan/index",
+    "pages/liucheng/index",
+    "pages/about/about"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#7fabfd",
+    "navigationBarTitleText": "培训机构",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#5b5b5b",
+    "selectedColor": "#7fabfd",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/shouye1.png",
+        "selectedIconPath": "image/shouye.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/action/action",
+        "text": "资讯",
+        "iconPath": "image/type1.png",
+        "selectedIconPath": "image/type.png"
+      },
+      {
+        "pagePath": "pages/course/course",
+        "text": "课程",
+        "iconPath": "image/kecheng1.png",
+        "selectedIconPath": "image/kecheng.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "image/mine1.png",
+        "selectedIconPath": "image/mine.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}

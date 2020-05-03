@@ -1,0 +1,9 @@
+<view class="container">
+  <!-- 登录组件 https://developers.weixin.qq.com/miniprogram/dev/api/wx.getUserInfo.html -->  
+  <button wx:if="{{!hasUserInfo}}" open-type="getUserInfo" bind:getuserinfo="onGetUserInfo">授权登录</button>
+  <!-- 登录后使用open-data -->
+  <view class="avatar-container avatar-position">
+      <image src="{{userInfo.avatarUrl}}" wx:if="{{hasUserInfo}}" class="avatar" />
+      <open-data wx:if="{{hasUserInfo}}" type="userNickName"></open-data>
+  </view>
+</view>
